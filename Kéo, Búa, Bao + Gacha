@@ -1,0 +1,99 @@
+import random
+
+# Chào mừng người chơi
+print('====================')
+print('Chào mừng đến trò chơi Kéo, Búa, Bao!')
+print('Trò chơi sẽ diễn ra trong 7 lượt. Hãy cố gắng đạt được 3 lần thắng để có cơ hội gacha đồ!!!')
+print('====================')
+
+# Các thông tin cơ bản
+nuoc_di: dict = {'kéo':"✂️",'búa':'🔨','bao':'📃'}
+nuoc_di_hop_le: list = list(nuoc_di.keys())
+diem: int =0
+so_lan_choi: int =1
+
+# Hoạt động của trò chơi
+while True:
+    
+    # Nước đi của người chơi
+    print(f"Lượt thứ {so_lan_choi}")
+    nguoi_choi: str = input('Kéo, Búa, Bao! >>>>> ').lower()
+    if nguoi_choi not in nuoc_di_hop_le:
+        print("Bạn đã nhập sai, vui lòng nhập lại.")
+        continue
+    print("=======")
+    
+    # Nước đi của máy
+    nguoi_may: str = random.choice(nuoc_di_hop_le)
+    
+    # In nước đi của cả hai
+    print(f'Bạn: {nuoc_di[nguoi_choi]}')
+    print(f'Máy: {nuoc_di[nguoi_may]}')
+    
+    # So sánh nước đi
+    if nguoi_choi == nguoi_may:
+        print('Cả hai hoà!')
+    elif nguoi_choi == 'kéo' and nguoi_may == 'bao':
+        print("Bạn đã thắng!!!")
+        diem += 1
+    elif nguoi_choi == 'búa' and nguoi_may == 'kéo':
+        print("Bạn đã thắng!!!")
+        diem += 1
+    elif nguoi_choi == 'bao' and nguoi_may == 'búa':
+        print("Bạn đã thắng!!!")
+        diem += 1
+    else:
+        print("Bạn đã thua...")
+        
+    # Kiểm tra người chơi đã đạt 3 điểm hoặc đã qua 7 lượt chơi, nếu không thì bắt đầu lượt mới
+    print('====================')
+    so_lan_choi += 1
+    if diem == 3:
+        print("Chúc mừng bạn đã đạt được 3 điểm!!!")
+        break
+    if so_lan_choi == 8:
+        print("Đã hết 7 lượt chơi, bạn đã không đạt được 3 điểm. Chúc bạn may mắn lần sau...")
+        quit()
+    
+# Gacha time !!!
+print('====================')
+print('Chào mừng bạn đến máy gacha. Sau đây là danh sách vật phẩm và tỉ lệ:' )
+print('''Hoa 🌻: 24%
+Kem 🍦: 15%
+Pizza 🍕: 12%
+Gấu bông 🧸: 10%
+Kem khổng lồ 🍨: 9%
+Giày 👟: 8%
+Xe mô tô 🏍: 7%
+Iphone 17 📱: 6%
+Kim cương 💎: 5%
+Con mèo 🐱: 4%''')
+print("=======")
+
+# Hoạt động của máy gacha
+bat_dau: str = input('Bạn đã sẵn sàng chưa? Nhập bất kì kí tự nào để bắt đầu quay: ')
+
+# Cho ngẫu nhiên số trúng thưởng từ 0 đến 100
+so_quay_thuong: int = random.randint(1,100)
+
+# So sánh số quay thưởng với số trúng thưởng của vật phẩm
+if so_quay_thuong in range(0,24):
+    print("Bạn trúng Hoa 🌻")
+elif so_quay_thuong in range(24,39):
+    print("Bạn trúng Kem 🍦")
+elif so_quay_thuong in range(24,51):
+    print("Bạn trúng Pizza 🍕")
+elif so_quay_thuong in range(51,61):
+    print("Bạn trúng Gấu bông 🧸")
+elif so_quay_thuong in range(61,70):
+    print("Bạn trúng Kem khổng lồ 🍨")
+elif so_quay_thuong in range(70,78):
+    print("Bạn trúng Giày 👟")
+elif so_quay_thuong in range(78,85):
+    print("Bạn trúng Xe mô tô 🏍")
+elif so_quay_thuong in range(85,91):
+    print("Bạn trúng Iphone 17 📱")
+elif so_quay_thuong in range(91,96):
+    print("Bạn trúng Kim cương 💎")
+else:
+    print("XIN CHÚC MỪNG!!! Bạn trúng Con mèo 🐱")
