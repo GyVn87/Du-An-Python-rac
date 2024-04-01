@@ -14,7 +14,7 @@ so_lan_choi: int =1
 
 # Hoạt động của trò chơi
 while True:
-    
+
     # Nước đi của người chơi
     print(f"Lượt thứ {so_lan_choi}")
     nguoi_choi: str = input('Kéo, Búa, Bao! >>>>> ').lower()
@@ -22,14 +22,14 @@ while True:
         print("Bạn đã nhập sai, vui lòng nhập lại.")
         continue
     print("=======")
-    
+
     # Nước đi của máy
     nguoi_may: str = random.choice(nuoc_di_hop_le)
-    
+
     # In nước đi của cả hai
     print(f'Bạn: {nuoc_di[nguoi_choi]}')
     print(f'Máy: {nuoc_di[nguoi_may]}')
-    
+
     # So sánh nước đi
     if nguoi_choi == nguoi_may:
         print('Cả hai hoà!')
@@ -44,7 +44,7 @@ while True:
         diem += 1
     else:
         print("Bạn đã thua...")
-        
+
     # Kiểm tra người chơi đã đạt 3 điểm hoặc đã qua 7 lượt chơi, nếu không thì bắt đầu lượt mới
     print('====================')
     so_lan_choi += 1
@@ -54,7 +54,7 @@ while True:
     if so_lan_choi == 8:
         print("Đã hết 7 lượt chơi, bạn đã không đạt được 3 điểm. Chúc bạn may mắn lần sau...")
         quit()
-    
+
 # Gacha time !!!
 print('====================')
 print('Chào mừng bạn đến máy gacha. Sau đây là danh sách vật phẩm và tỉ lệ:' )
@@ -81,7 +81,6 @@ bat_dau: str = input('Bạn đã sẵn sàng chưa? Nhập bất kì kí tự n�
 vat_pham: list = list(danh_sach.keys())
 ti_le: list = list(danh_sach.values())
 quay_thuong: list = random.choices(vat_pham, weights = ti_le)
-ket_qua: str = quay_thuong[0]
 
 # In kết quả trúng thưởng
-print(f'XIN CHÚC MỪNG! Bạn trúng {ket_qua}!')
+print(f'XIN CHÚC MỪNG! Bạn trúng {quay_thuong[0]}!')
