@@ -58,42 +58,30 @@ while True:
 # Gacha time !!!
 print('====================')
 print('Chào mừng bạn đến máy gacha. Sau đây là danh sách vật phẩm và tỉ lệ:' )
-print('''Hoa 🌻: 24%
-Kem 🍦: 15%
-Pizza 🍕: 12%
-Gấu bông 🧸: 10%
-Kem khổng lồ 🍨: 9%
-Giày 👟: 8%
-Xe mô tô 🏍: 7%
-Iphone 17 📱: 6%
-Kim cương 💎: 5%
-Con mèo 🐱: 4%''')
+
+# Tạo dictionary gồm vật phẩm và tỉ lệ và in ra cho người chơi
+danh_sach: dict = {'Hoa 🌻': 24,
+'Kem 🍦': 15,
+'Pizza 🍕': 12,
+'Gấu bông 🧸': 10,
+'Kem khổng lồ 🍨': 9,
+'Giày 👟': 8,
+'Xe mô tô 🏍': 7,
+'Iphone 17 📱': 6,
+'Kim cương 💎': 5,
+'Con mèo 🐱': 4}
+for vat_pham, ti_le in danh_sach.items():
+    print(vat_pham + f': {ti_le}%')
 print("=======")
 
 # Hoạt động của máy gacha
 bat_dau: str = input('Bạn đã sẵn sàng chưa? Nhập bất kì kí tự nào để bắt đầu quay: ')
 
-# Cho ngẫu nhiên số trúng thưởng từ 0 đến 100
-so_quay_thuong: int = random.randint(1,100)
+#Chọn vật phẩm ngẫu nhiên theo tỉ lệ
+vat_pham: list = list(danh_sach.keys())
+ti_le: list = list(danh_sach.values())
+quay_thuong: list = random.choices(vat_pham, weights = ti_le)
+ket_qua: str = quay_thuong[0]
 
-# So sánh số quay thưởng với số trúng thưởng của vật phẩm
-if so_quay_thuong in range(0,24):
-    print("Bạn trúng Hoa 🌻")
-elif so_quay_thuong in range(24,39):
-    print("Bạn trúng Kem 🍦")
-elif so_quay_thuong in range(24,51):
-    print("Bạn trúng Pizza 🍕")
-elif so_quay_thuong in range(51,61):
-    print("Bạn trúng Gấu bông 🧸")
-elif so_quay_thuong in range(61,70):
-    print("Bạn trúng Kem khổng lồ 🍨")
-elif so_quay_thuong in range(70,78):
-    print("Bạn trúng Giày 👟")
-elif so_quay_thuong in range(78,85):
-    print("Bạn trúng Xe mô tô 🏍")
-elif so_quay_thuong in range(85,91):
-    print("Bạn trúng Iphone 17 📱")
-elif so_quay_thuong in range(91,96):
-    print("Bạn trúng Kim cương 💎")
-else:
-    print("XIN CHÚC MỪNG!!! Bạn trúng Con mèo 🐱")
+# In kết quả trúng thưởng
+print(f'XIN CHÚC MỪNG! Bạn trúng {ket_qua}!')
